@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import {
     User,
@@ -51,7 +52,7 @@ const About = () => {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Left Column (Main Content) */}
+                    {/* Left Column */}
                     <div className="lg:col-span-2 space-y-8">
                         {/* Profile Card */}
                         <motion.div
@@ -62,11 +63,11 @@ const About = () => {
                             <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl -z-10 group-hover:bg-purple-500/10 transition-colors"></div>
 
                             <div className="flex flex-col md:flex-row gap-8 items-start">
-                                {/* Profile Image Placeholder */}
+                                {/* Profile Image */}
                                 <div className="relative">
                                     <div className="w-32 h-32 rounded-2xl bg-gray-800 overflow-hidden border-2 border-white/10">
                                         <img
-                                            src="https://i.ibb.co.com/35HVshjJ/IMG-20251015-112325-11.jpg"
+                                            src="https://i.ibb.co/35HVshjJ/IMG-20251015-112325-11.jpg"
                                             alt="Profile"
                                             className="w-full h-full object-cover"
                                         />
@@ -159,7 +160,7 @@ const About = () => {
                             </div>
                         </motion.div>
 
-                        {/* Tech Stack Overview */}
+                        {/* Tech Stack */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -229,7 +230,7 @@ const About = () => {
                         </motion.div>
                     </div>
 
-                    {/* Right Column (Sidebar) */}
+                    {/* Right Column */}
                     <div className="space-y-6">
                         {/* Lets Work Together */}
                         <motion.div
@@ -241,38 +242,66 @@ const About = () => {
                                 Lets Work Together
                             </h3>
                             <div className="grid grid-cols-2 gap-3 mb-6">
-                                <button className="flex flex-col items-center justify-center p-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white transition-colors">
+                                {/* Start a Project */}
+                                <button
+                                    onClick={() => {
+                                        document
+                                            .getElementById('contact')
+                                            ?.scrollIntoView({
+                                                behavior: 'smooth',
+                                            });
+                                    }}
+                                    className="flex flex-col items-center justify-center p-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white transition-colors">
                                     <Mail size={20} className="mb-2" />
                                     <span className="text-xs font-medium">
                                         Start a <br /> Project
                                     </span>
                                 </button>
-                                <button className="flex flex-col items-center justify-center p-4 rounded-xl bg-(--bg-surface) hover:bg-(--bg-card-hover) border border-(--border-surface) text-(--text-secondary) transition-colors">
+
+                                {/* Download Resume */}
+                                <a
+                                    href="/Md_Rashedul_Islam_Resume.pdf"
+                                    download="Md_Rashedul_Islam_Resume.pdf"
+                                    className="flex flex-col items-center justify-center p-4 rounded-xl bg-(--bg-surface) hover:bg-(--bg-card-hover) border border-(--border-surface) text-(--text-secondary) transition-colors">
                                     <FileText size={20} className="mb-2" />
                                     <span className="text-xs font-medium">
                                         Download <br /> Resume
                                     </span>
-                                </button>
+                                </a>
                             </div>
 
+                            {/* Quick Connect */}
                             <div className="p-4 rounded-xl bg-(--bg-surface) border border-(--border-surface)">
                                 <div className="text-xs text-center text-(--text-secondary) mb-3">
                                     Quick Connect
                                 </div>
                                 <div className="flex justify-center gap-4">
-                                    {[
-                                        Github,
-                                        Linkedin,
-                                        Twitter,
-                                        MessageSquare,
-                                    ].map((Icon, i) => (
-                                        <a
-                                            key={i}
-                                            href="#"
-                                            className="text-(--text-secondary) hover:text-(--text-primary) transition-colors">
-                                            <Icon size={18} />
-                                        </a>
-                                    ))}
+                                    <a
+                                        href="https://github.com/rashedul25389"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-(--text-secondary) hover:text-(--text-primary) transition-colors">
+                                        <Github size={18} />
+                                    </a>
+                                    <a
+                                        href="https://www.linkedin.com/in/rashedul25389/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-(--text-secondary) hover:text-(--text-primary) transition-colors">
+                                        <Linkedin size={18} />
+                                    </a>
+                                    <a
+                                        href="https://twitter.com/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-(--text-secondary) hover:text-(--text-primary) transition-colors">
+                                        <Twitter size={18} />
+                                    </a>
+                                    <a
+                                        href="mailto:mrashel.dev@gmail.com"
+                                        className="text-(--text-secondary) hover:text-(--text-primary) transition-colors">
+                                        <MessageSquare size={18} />
+                                    </a>
                                 </div>
                             </div>
                         </motion.div>

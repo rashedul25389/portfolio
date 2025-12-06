@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Terminal, Code, Cpu } from 'lucide-react';
 
 const CodeWindow = () => {
-    // The code snippets tokenized for coloring
+    // Tokenized code
     const tokens = [
         { text: 'import', color: 'text-[var(--code-purple)]' },
         { text: ' { ', color: 'text-[var(--text-primary)]' },
@@ -61,44 +61,32 @@ const CodeWindow = () => {
         { text: '// Startup MVPs', color: 'text-[var(--code-gray)]' },
     ];
 
-    // Calculate total length
     const totalLength = tokens.reduce(
         (acc, token) => acc + token.text.length,
         0
     );
-
-    // Typing effect
     const [charIndex, setCharIndex] = useState(0);
 
     useEffect(() => {
         let timeout;
-
         if (charIndex < totalLength) {
-            // Typing characters
-            timeout = setTimeout(() => {
-                setCharIndex((prev) => prev + 1);
-            }, Math.random() * 30 + 30); // 30-60ms per char
+            timeout = setTimeout(
+                () => setCharIndex((prev) => prev + 1),
+                Math.random() * 30 + 30
+            );
         } else {
-            // Finished typing, wait before resetting (Loop)
-            timeout = setTimeout(() => {
-                setCharIndex(0);
-            }, 3000); // Wait 3 seconds
+            timeout = setTimeout(() => setCharIndex(0), 3000);
         }
-
         return () => clearTimeout(timeout);
     }, [charIndex, totalLength]);
 
-    // Helper to render tokens up to charIndex
     const renderCode = () => {
         let currentCount = 0;
         const rendered = [];
-
         for (let i = 0; i < tokens.length; i++) {
             const token = tokens[i];
             const tokenLen = token.text.length;
-
             if (currentCount + tokenLen <= charIndex) {
-                // Full token shown
                 rendered.push(
                     <span key={i} className={token.color}>
                         {token.text}
@@ -106,7 +94,6 @@ const CodeWindow = () => {
                 );
                 currentCount += tokenLen;
             } else if (currentCount < charIndex) {
-                // Partial token shown
                 const sliceLen = charIndex - currentCount;
                 rendered.push(
                     <span key={i} className={token.color}>
@@ -114,11 +101,8 @@ const CodeWindow = () => {
                     </span>
                 );
                 currentCount += sliceLen;
-                break; // Stop after partial
-            } else {
-                // Not shown yet
                 break;
-            }
+            } else break;
         }
         return rendered;
     };
@@ -126,7 +110,7 @@ const CodeWindow = () => {
     return (
         <div className="relative w-full max-w-lg mx-auto">
             {/* Decorative "Solutions" Tag */}
-            <div className="absolute z-10 px-3 py-1 text-xs font-medium text-amber-300 transform -translate-y-1/2 bg-gray-900 border rounded-md shadow-lg border-amber-500/30 left-6 -top-2">
+            <div className="absolute z-10 px-3 py-1 text-xs font-medium text-amber-300 transform -translate-y-1/2 bg-gray-900 border rounded-md shadow-lg border-amber-500/30 left-6 -top-2 hover:bg-amber-500/20 transition-colors duration-200">
                 <span className="flex items-center gap-1">
                     <Terminal size={12} /> Solutions
                 </span>
@@ -144,7 +128,7 @@ const CodeWindow = () => {
                     <div className="text-xs font-mono text-gray-400">
                         portfolio.js
                     </div>
-                    <div className="w-8"></div> {/* Spacer for alignment */}
+                    <div className="w-8"></div>
                 </div>
 
                 {/* Code Content */}
@@ -158,16 +142,16 @@ const CodeWindow = () => {
                 </div>
 
                 {/* Bottom Badge */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-gray-900/90 border border-gray-700/50 rounded-full flex items-center gap-2 shadow-lg">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-gray-900/90 border border-gray-700/50 rounded-full flex items-center gap-2 shadow-lg hover:bg-gray-800 transition-colors">
                     <span className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold flex flex-col items-center leading-none">
                         <span>Built with</span>
                         <span className="text-white">Modern Tech</span>
                     </span>
                 </div>
 
-                {/* Floating Action Button */}
+                {/* Floating Action Button with Gradient Hover */}
                 <div className="absolute bottom-4 right-4">
-                    <button className="p-3 bg-purple-600 rounded-lg hover:bg-purple-700 text-white shadow-lg transition-colors">
+                    <button className="p-3 bg-purple-600 rounded-lg text-white shadow-lg transition-all duration-300 hover:bg-linear-to-r hover:from-purple-500 hover:via-pink-500 hover:to-red-500 hover:scale-105">
                         <Code size={20} />
                     </button>
                 </div>

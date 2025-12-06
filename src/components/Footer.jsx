@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import {
     Github,
@@ -185,7 +186,7 @@ const Footer = () => {
 
                     <button
                         onClick={scrollToTop}
-                        className="p-3 bg-(--bg-card) border border-(--border-color) rounded-full text-(--text-primary) hover:bg-purple-600 hover:border-purple-500 transition-all hover:-translate-y-1 text-white"
+                        className="p-3 bg-(--bg-card) border border-(--border-color) rounded-full text-(--text-primary) hover:bg-purple-600 hover:border-purple-500 transition-all hover:-translate-y-1"
                         aria-label="Scroll to top"></button>
                 </div>
             </motion.div>

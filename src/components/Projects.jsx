@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Layers, ArrowRight } from 'lucide-react';
 
@@ -78,8 +79,8 @@ const Projects = () => {
         activeCategory === 'All'
             ? projectsData
             : projectsData.filter(
-                  (project) => project.category === activeCategory
-              );
+                (project) => project.category === activeCategory
+            );
 
     return (
         <section
@@ -168,11 +169,13 @@ const ProjectCard = ({ project }) => (
             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center gap-4 backdrop-blur-sm">
                 <a
                     href={project.links.live}
+                    target="_blank"
                     className="p-3 bg-(--bg-surface) rounded-full hover:bg-purple-600 text-(--text-primary) hover:text-white transition-all hover:scale-110 pointer-events-none group-hover:pointer-events-auto">
                     <ExternalLink size={20} />
                 </a>
                 <a
                     href={project.links.code}
+                    target="_blank"
                     className="p-3 bg-(--bg-surface) rounded-full hover:bg-(--bg-card-hover) text-(--text-primary) transition-all hover:scale-110 pointer-events-none group-hover:pointer-events-auto">
                     <Github size={20} />
                 </a>
@@ -231,21 +234,32 @@ const ProjectCard = ({ project }) => (
                     {project.techStack.map((tech, i) => (
                         <span
                             key={i}
-                            className="px-2 py-1 text-[10px] text-(--text-secondary)] bg-(--bg-surface) border border-(--border-surface) rounded-md hover:bg-(--bg-card-hover)] transition-colors">
+                            className="px-2 py-1 text-[10px] text-(--text-secondary) bg-(--bg-surface) border border-(--border-surface) rounded-md hover:bg-(--bg-card-hover) transition-colors">
                             {tech}
                         </span>
                     ))}
                 </div>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-(--border-surface)]">
-                    <button className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-semibold text-white bg-[#6938ef] rounded-lg hover:bg-[#5b2ad4] transition-all hover:shadow-[0_0_20px_rgba(105,56,239,0.3)] group-hover:translate-y-0.5">
+                <div className="flex items-center gap-3 pt-4 border-t border-(--border-surface)">
+                    {/* Live Demo */}
+                    <a
+                        href={project.links.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-semibold text-white bg-[#6938ef] rounded-lg hover:bg-[#5b2ad4] transition-all hover:shadow-[0_0_20px_rgba(105,56,239,0.3)]active:scale-95">
                         <ExternalLink size={16} />
                         Live Demo
-                    </button>
-                    <button className="flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-(--text-primary) bg-(--bg-surface) border border-(--border-surface) rounded-lg hover:bg-(--bg-card-hover) transition-colors">
+                    </a>
+
+                    {/* Code */}
+                    <a
+                        href={project.links.code}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-(--text-primary) rounded-lg hover:bg-(--bg-card-hover) transition-colors active:scale-95">
                         <Github size={18} />
                         Code
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

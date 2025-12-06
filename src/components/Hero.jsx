@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import CodeWindow from './CodeWindow';
 
@@ -97,7 +98,12 @@ const Hero = () => {
                         Technical <br /> Interview
                     </button>
 
-                    <button className="flex items-center gap-2 px-6 py-3 text-sm font-medium text-(--text-primary) transition-all border rounded-lg bg-(--bg-card) border-(--border-color) hover:border-gray-500 hover:bg-gray-800/20 active:scale-95">
+                    <a
+                        href="/Md_Rashedul_Islam_Resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-6 py-3 text-sm font-medium text-(--text-primary)
+            transition-all border rounded-lg bg-(--bg-card) border-(--border-color) hover:border-gray-500 hover:bg-gray-800/20 active:scale-95">
                         <svg
                             width="18"
                             height="18"
@@ -112,7 +118,7 @@ const Hero = () => {
                             <line x1="12" x2="12" y1="15" y2="3" />
                         </svg>
                         View <br /> Resume
-                    </button>
+                    </a>
                 </div>
 
                 {/* Availability Status */}
