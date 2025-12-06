@@ -14,7 +14,7 @@ const Hero = () => {
                 transition={{ duration: 0.8 }}
                 className="flex flex-col items-start w-full max-w-2xl gap-6 mb-16 md:w-1/2 md:mb-0 mt-20 ">
                 <h1 className="text-5xl font-black leading-tight tracking-tight text-(--text-primary) md:text-6xl">
-                    I'm Md. Rahsedul Islam <br />
+                    I'm Md. Rashedul Islam <br />
                 </h1>
 
                 <h2 className="text-4xl font-bold md:text-5xl">
