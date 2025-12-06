@@ -8,7 +8,6 @@ import {
     Send,
     Github,
     Linkedin,
-    Twitter,
     Instagram,
 } from 'lucide-react';
 
@@ -37,7 +36,7 @@ const Contact = () => {
 
     const socialLinks = [
         { icon: Linkedin, href: '#', label: 'LinkedIn' },
-        { icon: Twitter, href: '#', label: 'Twitter' },
+        // { icon: Twitter, href: '#', label: 'Twitter' },
         { icon: Github, href: '#', label: 'GitHub' },
         { icon: Instagram, href: '#', label: 'Instagram' },
     ];

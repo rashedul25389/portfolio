@@ -291,16 +291,9 @@ const About = () => {
                                         <Linkedin size={18} />
                                     </a>
                                     <a
-                                        href="https://twitter.com/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-(--text-secondary) hover:text-(--text-primary) transition-colors">
-                                        <Twitter size={18} />
-                                    </a>
-                                    <a
                                         href="mailto:mrashel.dev@gmail.com"
                                         className="text-(--text-secondary) hover:text-(--text-primary) transition-colors">
-                                        <MessageSquare size={18} />
+                                        <Mail size={18} />
                                     </a>
                                 </div>
                             </div>
